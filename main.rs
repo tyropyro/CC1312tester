@@ -56,7 +56,13 @@ fn main() -> ! {
     
 
     loop {
-        continue;
+        timer.delay_ms(100);
+        if gpio.dout7_4.read().bits() == 0 {
+        gpio.dout7_4.write(|w| w.set_bit());
+            } else {
+                gpio.dout7_4.write(|w| w.clear_bit());
+            }
     }
 }
 
+}
